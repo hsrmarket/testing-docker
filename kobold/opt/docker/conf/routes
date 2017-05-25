@@ -1,0 +1,47 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                                   controllers.HomeController.index
+
+# All calls for articles
+GET     /api/articles                       controllers.ArticleController.getAllArticles
+POST    /api/articles                       controllers.ArticleController.insertArticle
+GET     /api/articles/recent                controllers.ArticleController.getRecentArticles
+GET     /api/articles/books                 controllers.BookController.getAllBooks
+GET     /api/articles/electronics           controllers.ElectronicController.getAllElectronics
+GET     /api/articles/officesupplies        controllers.OfficeSupplyController.getAllOfficeSupplies
+GET     /api/articles/other                 controllers.OtherArticleController.getAllOtherArticles
+GET     /api/articles/:id                   controllers.ArticleController.getOneArticle(id:Integer)
+PUT     /api/articles/:id                   controllers.ArticleController.updateOneArticle(id:Integer)
+DELETE  /api/articles/:id                   controllers.ArticleController.deleteArticle(id:Integer)
+
+# All calls for purchases
+GET     /api/purchases                      controllers.PurchaseController.getAllPurchases
+POST    /api/purchases                      controllers.PurchaseController.insertPurchase
+GET     /api/purchases/:id                  controllers.PurchaseController.getOnePurchase(id:Integer)
+DELETE  /api/purchases/:id                  controllers.PurchaseController.deletePurchase(id:Integer)
+PATCH   /api/purchases/:id                  controllers.PurchaseController.updatePurchase(id:Integer)
+
+# All calls for user/account
+GET     /api/user/:id/articles              controllers.AccountController.getAllArticlesFromAccount(id:Integer)
+GET     /api/user/:id/purchases             controllers.AccountController.getAllBoughtArticlesFromAccount(id:Integer)
+GET     /api/user/:id/sales                 controllers.AccountController.getAllSoldArticlesFromAccount(id:Integer)
+PUT     /api/user/:id                       controllers.AccountController.updateOneAccount(id:Integer)
+POST    /api/user/login                     controllers.AccountController.login
+
+GET     /api/accounts                       controllers.AccountController.getAllAccounts
+POST    /api/accounts                       controllers.AccountController.insertAccount
+GET     /api/accounts/admin                 controllers.AccountController.getAdminAccounts
+GET     /api/accounts/normal                controllers.AccountController.getNormalAccounts
+GET     /api/accounts/:id                   controllers.AccountController.getOneAccount(id:Integer)
+PUT     /api/accounts/:id                   controllers.AccountController.updateOneAccount(id:Integer)
+DELETE  /api/accounts/:id                   controllers.AccountController.deleteAccount(id:Integer)
+
+# Search
+POST    /api/search                         controllers.ArticleController.getAllArticlesFromSearch
+
+# Map static resources from the /public folder to the /assets URL path
+# Needed for files in the public folder like js or stylesheets etc.
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
