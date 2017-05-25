@@ -10,20 +10,20 @@
 ## How to use
 
 ### 1) fetch everything & switch to SU
-```shell
+```
 $ git clone https://github.com/hsrmarket/testing-docker.git
 $ su -
 ```
 
 ### 2) build Postgresql DB
-```shell
+```
 # cd ./testing-docker/elephant/
 # docker build -t elephant .
 # docker images
 ```
 
 ### 3) build Play Framework App
-```shell
+```
 # cd ../kobold
 # docker build -t kobold .
 # docker images
@@ -33,13 +33,13 @@ $ su -
 * the name has to be exactly like below (because the play framework app is already preconfigured to the name)
 * wait about 30s before going to next step (because importing dump takes time)
 
-```shell
+```
 # docker run --name flying_dumbo -d -p 5432:5432 elephant
 # docker ps -a
 ```
 
 ### 5) run Play Frameworh App
-```shell
+```
 # docker run --name green_kobold --link flying_dumbo:elephant -d -p 9000:9000 kobold
 # docker ps -a
 ```
